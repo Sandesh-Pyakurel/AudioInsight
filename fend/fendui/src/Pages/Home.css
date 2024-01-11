@@ -1,0 +1,77 @@
+.screen{
+    background-image: url('../assets/Bg.png');
+    background-size:auto; 
+    background-position: bottom 20% right 20%;
+    background-repeat: no-repeat;
+    background-color: rgba(255,255,255,0.3);
+    height: 100vh;
+    overflow: hidden;
+    animation: moveBackground 0.8s ease-in-out forwards;
+}
+@keyframes moveBackground {
+    from {
+        background-position: bottom 100% right 20%;
+    }
+    to {
+        background-position: bottom 20% right 20%;
+    }
+}
+.getStarted {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+.title{
+    font-size: 3rem;
+    display: flex;
+    font-weight: 700;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    font-family: 'Courier New';
+    display: inline-block;
+    animation: moveIn 0.8s ease forwards;
+    
+}
+@keyframes moveIn {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+.subtitle{
+    font-size: 2rem;
+    display: flex;
+    font-weight: 600;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    font-family: 'Courier New';
+    display: inline-block;
+    animation: moveIn 0.8s ease forwards;
+    
+}
+
+
+.getStarted button{
+    background: black;
+    color: white;
+    font-family:'Arial';
+    border-radius: 1rem;
+    width: 150px;
+    height: 60px;
+    border-width: 1px;
+    font-size: large;
+    font-weight: 400;
+    border: 1px solid grey;
+    align-self: center;
+    
+}
+.getStarted button:hover {
+    background-color: #dedede;
+    color: black; 
+    border: 1px solid grey;
+}
