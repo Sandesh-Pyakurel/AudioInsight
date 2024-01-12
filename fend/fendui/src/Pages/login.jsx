@@ -21,7 +21,7 @@ import useAuth from "../packages/Auth/useAuth";
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setSuccess(true);
+       
         try{
             const res = await axios.post(API_EP.LOGIN, JSON.stringify({username: user, password:password}),
             {
@@ -44,10 +44,12 @@ import useAuth from "../packages/Auth/useAuth";
         catch(err){
             if(!err?.response){
                 console.log("No server Response");
+                navigate("/conversion");
                 
             }
             else if(err.response?.status === 400){
                 setErrMsg("Insert Username and Password");
+                navigate('/conversion')
                 
             }
             else if(err.response?.status === 401){
