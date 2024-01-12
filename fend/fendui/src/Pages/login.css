@@ -1,4 +1,4 @@
-/* .errmsg {
+.errmsg {
     display:grid;
     justify-content: center;
     align-items: center;
@@ -10,7 +10,7 @@
 .offscreen {
     position: absolute;
     left: -9999px;
-} */
+}
 .login_container{
     display: flex;
     justify-content: center;
