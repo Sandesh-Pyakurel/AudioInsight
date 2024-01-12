@@ -9,6 +9,8 @@ text = convert_text(audio)
 
 #prompt = minute_prompt() + text
 prompt = lecture_prompt() + text
+
+
 #print(prompt)
 
 response = get_content(prompt)
