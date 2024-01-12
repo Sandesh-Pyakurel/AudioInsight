@@ -107,7 +107,7 @@ def create_minute(file_path, dictionary):
         cell_sn.text = f'{row_num+1}'
         cell_sn.paragraphs[0].runs[0].font.size = Pt(12)
 
-    present_position = dictionary['relative position']
+    present_position = dictionary['present position']
     for row_num, row_name in enumerate(present_position):
         cell = table_pre.cell(row_num+1, 2)
         cell.text = row_name
@@ -134,6 +134,22 @@ def create_minute(file_path, dictionary):
         cell = table_abs.cell(0, col_num)
         cell.text = column_name
         cell.paragraphs[0].runs[0].bold = True
+        cell.paragraphs[0].runs[0].font.size = Pt(12)
+
+    absent_members = dictionary['absent members']
+    for row_num, row_name in enumerate(absent_members):
+        cell = table_abs.cell(row_num+1, 1)
+        cell.text = row_name
+        cell.paragraphs[0].runs[0].font.size = Pt(12)
+        
+        cell_sn = table_abs.cell(row_num+1, 0)
+        cell_sn.text = f'{row_num+1}'
+        cell_sn.paragraphs[0].runs[0].font.size = Pt(12)
+
+    absent_position = dictionary['absent position']
+    for row_num, row_name in enumerate(absent_position):
+        cell = table_abs.cell(row_num+1, 2)
+        cell.text = row_name
         cell.paragraphs[0].runs[0].font.size = Pt(12)
     
 
