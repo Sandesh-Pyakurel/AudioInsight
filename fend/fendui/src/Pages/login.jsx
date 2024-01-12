@@ -87,7 +87,7 @@ import useAuth from "../packages/Auth/useAuth";
                         <input type = "submit" value = "login"/>
                     </div>
                     <div className="linker">
-                    <button onClick = {()=>navigate("")} >Don't have an account. <span>Register here.</span></button>
+                    <button onClick = {()=>navigate("/Register")} >Don't have an account. <span>Register here.</span></button>
                     </div>
                     
                 </div>
