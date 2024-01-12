@@ -2,8 +2,8 @@ import whisper
 
 def convert_text(audio):
     model = whisper.load_model("base")
-    print('converting ...')
+    print('converting audio to text...')
     result = model.transcribe(audio)
-    print('conversion completed!!')
+    print('Text conversion completed!!')
     return result["text"]
 
