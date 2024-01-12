@@ -44,12 +44,15 @@ import useAuth from "../packages/Auth/useAuth";
         catch(err){
             if(!err?.response){
                 console.log("No server Response");
+                
             }
             else if(err.response?.status === 400){
                 setErrMsg("Insert Username and Password");
+                
             }
             else if(err.response?.status === 401){
                 setErrMsg("Invalid username and password!");
+                
             }
         }
        
@@ -58,12 +61,12 @@ import useAuth from "../packages/Auth/useAuth";
     }
     return(
         
-        // <>
-        // {success ? <Navigate to = "/conversion" /> : 
+       <> 
+        {success ? <Navigate to = "/conversion" /> : (
         
          
-        
-        <div className = "container">
+        <>
+        <div className = "login_container">
         <p ref = {errRef} className = {errMsg ? "errmsg": "offscreen"} aria-live="assertive">{errMsg}</p>
             <form onSubmit={handleSubmit}>
             
@@ -88,9 +91,10 @@ import useAuth from "../packages/Auth/useAuth";
                 </div>
             </form>
         </div>
+        </>
         
-        //}
-        // </>
+    )}
+        </>
         
 
 
