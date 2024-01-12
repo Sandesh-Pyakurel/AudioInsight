@@ -5,7 +5,7 @@ from gpt_response import get_content
 from generate_prompt import minute_prompt, lecture_prompt
 from create_minute import create_minute
 
-audio = 'recordings/meeting.m4a'
+#audio = 'recordings/meeting.m4a'
 
 def audio_to_minute(audio):
     text = convert_text(audio)
@@ -22,4 +22,4 @@ def audio_to_minute(audio):
     return file_path
 
 
-audio_to_minute(audio)
+#audio_to_minute(audio)
