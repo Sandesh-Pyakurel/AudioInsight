@@ -1,6 +1,7 @@
 .files-container{
     display: flex;
     justify-content: space-evenly;
-    flex-direction: row;
+    
+    width:100%;
     padding: 1rem;
 }

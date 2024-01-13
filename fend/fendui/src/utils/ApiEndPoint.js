@@ -5,7 +5,7 @@ class API_EP{
     static USERS = '/auth/users/me/';
     static SECTIONS = '/sections/';
     static TOPICS = '/topics/';
-    static ASSIGNMENTS = '/assignments/';
+    static AUDIOPROCESS = '/api/audioprocess/';
     static RESOURCES = '/resources/';
     static TOPICS = '/topics/';
     static CHAPTER = '/chapter/';
