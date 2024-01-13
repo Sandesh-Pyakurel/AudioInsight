@@ -17,6 +17,7 @@ export const FileBrowse = () => {
     const [errMsg, setErrMsg] = useState('');
     const [click, setClick] = useState(false);
     const [inputfile, setInputFile] = useState('');
+    const [dfile, setDfile] = useState();
     const handleFileChange = (e)=>{
         const file= e.target.files[0];
         setSelFile(file);
@@ -65,7 +66,8 @@ export const FileBrowse = () => {
             },
           });
           console.log(res);
-          setErrMsg("successfully Added Assigment");
+          setErrMsg('');
+          setSubmitted(true);
           
         } catch (err)  {
           if (err.response) {
@@ -86,7 +88,7 @@ export const FileBrowse = () => {
         }
       }
     
-        setSubmitted(true);
+        
         
     }
     const handleSelectChange = (e)=>{
@@ -97,7 +99,26 @@ export const FileBrowse = () => {
       console.log(selectedOpt);
       console.log(inputfile);
 
-    },[selectedOpt, inputfile])
+    },[selectedOpt, inputfile]);
+
+    useEffect(()=>{
+      const getDfile = async () =>{
+        let isMounted = true;
+        const controller = new AbortController();
+        try{    
+            const res = await axiosPrivate.get(`${API_EP.AUDIOPROCESS}`,{ signal: controller.signal});
+            console.log(res.data[res.data.lenth - 1]);
+            isMounted && setDfile(res.data[res.data.length-1]);
+        }catch(err){
+            console.error(err);
+        }
+    
+    getDfile();
+    return() => {
+      isMounted = false;
+      controller.abort();
+    }}
+    },[submitted]);
     
   return (
     <>
@@ -138,7 +159,7 @@ export const FileBrowse = () => {
     </div>
     {(submitted && !errMsg) ? (
       
-      <div className="showconvertedfile"><div><File filename = "jelly"/></div></div>
+      <div className="showconvertedfile"><div><File filename = {dfile.doc_name} url = {dfile.document}/></div></div>
       
     ) : (
       <>
