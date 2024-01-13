@@ -21,9 +21,25 @@ export const FileBrowse = () => {
         setSelFile(file);
     }
     const axiosPrivate = useAxiosPrivate();
+    const Notification = ({ message, type }) => {
+      const notificationStyle = {
+        backgroundColor: '#dedede',
+        //boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)', // Black shadow
+        padding: '10px',
+        margin: '0 auto',
+        width: '30vw',
+      };
+      return (
+        <div style={{ ...notificationStyle, ...{ borderRadius: '0px' } }} className={`notification ${type}`}>
+          <p>{message}</p>
+        </div>
+      );
+    };
     const handleSubmit = async(e)=>{
       e.preventDefault();
+      setErrMsg('');
       setClick(true);
+      setSubmitted(false);
       let userID;
         if(selFile && selectedOpt){
             console.log(selFile);
@@ -49,9 +65,25 @@ export const FileBrowse = () => {
           console.log(res);
           setErrMsg("successfully Added Assigment");
           
-        } catch (err) {
-          setErrMsg("Cannot Add File. First Add Chapter");
+        } catch (err)  {
+          if (err.response) {
+          if (err.response.status === 400) {
+            setErrMsg("Bad Request: Check your request data");
+          } else if (err.response.status === 401) {
+            setErrMsg("Unauthorized: You are not authorized to perform this action");
+          } else if (err.response.status === 404) {
+            setErrMsg("Not Found: The requested resource was not found");
+          } else {
+            setErrMsg(`Error: ${err.response.status} Server Error.`);
+          }
+        } else if (err.request) {
+          setErrMsg("No response received from the server");
+        } else {
+          console.error("Error:", err.message);
+          setErrMsg("An unexpected error occurred");
         }
+      }
+    
         setSubmitted(true);
         
     }
@@ -66,7 +98,8 @@ export const FileBrowse = () => {
   return (
     <>
     <div className="choose">
-    <div class="mb-3">
+      <div className="forminput">
+      <div class="mb-3">
     <label for="formFile" class="form-label">Choose your Audio:</label>
     <input
         className="form-control"
@@ -76,13 +109,15 @@ export const FileBrowse = () => {
         onChange={handleFileChange}
     />
     </div>
+      </div>
+    
     <div className="selector">
       <select class="form-select" aria-label="Default select example" onChange={handleSelectChange} >
       <option disabled hidden selected>Choose Converted Document</option>
       <option value={type1}>Minute</option>
       <option value={type2}>LectureNotes</option>
       <option value={type3}>SpeechDocument</option>
-</select>
+    </select>
     </div>
     <div>
     <button className = "filebutton"
@@ -93,17 +128,19 @@ export const FileBrowse = () => {
           Submit
     </button>
     </div>
+    {(submitted && !errMsg) ? (
+      
+      <div className="showconvertedfile"><div><File filename = "jelly"/></div></div>
+      
+    ) : (
+      <>
+        {errMsg ? <Notification message={errMsg} type="error" /> : null}
+        {(click && !errMsg) ? <Loading /> : null}
+      </>
+    )}
     </div>
-    {submitted ? (
-      <File />
-        
-      ) : (
-        <>
-          {click ? <Loading/> : <></>}
-        </>
-        
-        
-      )}
+    
+    
     
     </>
     

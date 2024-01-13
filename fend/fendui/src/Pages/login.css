@@ -52,6 +52,11 @@
     border-radius: 0.4rem;
     width: 6rem;
 }
+.loginbtn input:hover{
+    background-color: #dedede;
+    color: black;
+    border: 1px solid black;
+}
 .linker button{
     background-color: white;
     border: none;

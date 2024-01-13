@@ -1,17 +1,22 @@
 .logoicon{
-    display: flex;
-    align-items: center;
-    justify-self: center;
-    width: 12vw;
-    font-size: 5rem;
-    background-color: #dedede;
-    margin: 0 auto;
-    border-radius: 0.3rem;
-    text-align: center;
-}
-.logoicon:hover{
-    border: 1px solid black;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1.2rem;
+  width: 100%;
+  margin: 0 auto;
+  padding:0.3rem;
 }
 .logoicon span{
-    font-size:2rem ;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
 }
+.logoicon:hover{
+    background-color: #dedede;
+    border-radius: 0.2rem;
+    
+}
+/* .logoicon span{
+    font-size:2rem ;
+} */
