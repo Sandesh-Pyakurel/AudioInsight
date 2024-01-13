@@ -6,6 +6,7 @@ import Login from './Pages/login';
 import Layout from './Layout/layout';
 import RequireAuth from './packages/Auth/requireAuth';
 import { Register } from './Pages/Register';
+import { MyDocs } from './Pages/MyDocs';
 function App() {
   return (
     <BrowserRouter>
@@ -15,6 +16,8 @@ function App() {
       <Route path = '/' element = {<Home/>} />
       <Route element = {<RequireAuth/>} >
       <Route path = '/conversion' element = {<AudioConverter/>}/>
+      <Route path = '/mydocs' element = {<MyDocs/>}/>
+
       </Route>
       <Route element = {<Register/>} path = "/Register" />
       

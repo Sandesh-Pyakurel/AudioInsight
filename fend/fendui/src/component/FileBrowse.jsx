@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
 import './FileBrowse.css'
 import { useState } from 'react';
-import { PiMicrosoftWordLogoFill } from "react-icons/pi";
+
 import {Loading }from './Loading'
+import { File } from './File';
 export const FileBrowse = () => {
-    const type1 = 'Minute';
-    const type2 = 'LectureNotes';
-    const type3 = 'SpeechDocument';
+    const type1 = 'minute';
+    const type2 = 'lecture';
+    const type3 = 'speech';
     const [selFile, setSelFile]= useState(null);
     const [selectedOpt, setSelectedOpt] = useState(null);
     const [showFileIcon, setShowFileIcon] = useState(false);
@@ -15,9 +16,7 @@ export const FileBrowse = () => {
         const file= e.target.files[0];
         setSelFile(file);
     }
-    const handleFileShow = ()=>{
-      console.log('directed to another url');
-    }
+    
     const handleSubmit = ()=>{
         if(selFile && selectedOpt){
             console.log(selFile);
@@ -50,9 +49,9 @@ export const FileBrowse = () => {
     <div className="selector">
       <select class="form-select" aria-label="Default select example" onChange={handleSelectChange} >
       <option disabled hidden selected>Choose Converted Document</option>
-      <option value={type1}>{type1}</option>
-      <option value={type2}>{type2}</option>
-      <option value={type3}>{type3}</option>
+      <option value={type1}>Minute</option>
+      <option value={type2}>LectureNotes</option>
+      <option value={type3}>SpeechDocument</option>
 </select>
     </div>
     <div>
@@ -65,12 +64,9 @@ export const FileBrowse = () => {
     </button>
     </div>
     </div>
-    {(showFileIcon && !submitted)? (
-        <div className='logoicon' onClick={handleFileShow}>
-          <PiMicrosoftWordLogoFill/>
-          <span>hello</span>
-          {/* Add any additional information or styling for the file icon */}
-        </div>
+    {(!showFileIcon)? (
+      <File />
+        
       ) : (
         <>
           {submitted ? <Loading/> : <></>}

@@ -1,0 +1,16 @@
+.logoicon{
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    width: 12vw;
+    font-size: 5rem;
+    background-color: #dedede;
+    margin: 0 auto;
+    border-radius: 0.3rem;
+}
+.logoicon:hover{
+    border: 1px solid black;
+}
+.logoicon span{
+    font-size:2rem ;
+}
