@@ -7,9 +7,9 @@ import './MyDocs.css'
 const files =[
     {id:1,filename: "hellow", URL: "https://localhost:3000/"},
     {id:2,filename: "ram" ,URL: "https://localhost:3000/"},
-    {filename: "sita" ,URL: "https://localhost:3000/"},
-    {filename: "adf" ,URL: "https://localhost:3000/"},
-    {filename: "fff" ,URL: "https://localhost:3000/"}
+    {id:3,filename: "sita" ,URL: "https://localhost:3000/"},
+    {id:4,filename: "adf" ,URL: "https://localhost:3000/"},
+    {id:5,filename: "fff" ,URL: "https://localhost:3000/"}
 ]
 export const MyDocs = () => {
     // useEffect(()=>{

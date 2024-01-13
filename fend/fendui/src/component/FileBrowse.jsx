@@ -1,26 +1,56 @@
 import React, { useEffect } from 'react'
 import './FileBrowse.css'
 import { useState } from 'react';
-
+import { axiosPrivate } from '../api/axios/axios';
+import API_EP from '../utils/ApiEndPoint';
 import {Loading }from './Loading'
 import { File } from './File';
+import useAxiosPrivate from '../packages/Auth/useAxiosPrivate';
 export const FileBrowse = () => {
-    const type1 = 'minute';
+    const type1 = 'meeting';
     const type2 = 'lecture';
     const type3 = 'speech';
     const [selFile, setSelFile]= useState(null);
     const [selectedOpt, setSelectedOpt] = useState(null);
     const [showFileIcon, setShowFileIcon] = useState(false);
     const [submitted, setSubmitted] = useState(false);
+    const [errMsg, setErrMsg] = useState('');
+    const [click, setClick] = useState(false);
     const handleFileChange = (e)=>{
         const file= e.target.files[0];
         setSelFile(file);
     }
-    
-    const handleSubmit = ()=>{
+    const axiosPrivate = useAxiosPrivate();
+    const handleSubmit = async(e)=>{
+      e.preventDefault();
+      setClick(true);
+      let userID;
         if(selFile && selectedOpt){
             console.log(selFile);
             console.log(selectedOpt);
+        }
+        try{
+          const res0 = await axiosPrivate.get(API_EP.USERS);
+          console.log(res0.data);
+          userID = res0.data.id;
+        }catch(err){
+          console.log(err);
+        }
+        try {
+          const formData = new FormData();
+          formData.append("user", userID);
+          formData.append("audio", selFile);
+          formData.append("type", "meeting");
+          const res = await axiosPrivate.post(API_EP.AUDIOPROCESS, formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          });
+          console.log(res);
+          setErrMsg("successfully Added Assigment");
+          
+        } catch (err) {
+          setErrMsg("Cannot Add File. First Add Chapter");
         }
         setSubmitted(true);
         
@@ -64,12 +94,12 @@ export const FileBrowse = () => {
     </button>
     </div>
     </div>
-    {(!showFileIcon)? (
+    {submitted ? (
       <File />
         
       ) : (
         <>
-          {submitted ? <Loading/> : <></>}
+          {click ? <Loading/> : <></>}
         </>
         
         
