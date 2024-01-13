@@ -9,6 +9,7 @@ from .renderers import UserRenderer
 from .models import User, AudioInsight
 from .serializers import UserRegisterationSerializer, UserLoginSerializer, UserProfileSerializer, AudioProcessSerializer
 
+from .logic.check import select_convert
 
 def get_tokens_for_user(user):
     refresh = RefreshToken.for_user(user)
@@ -60,5 +61,11 @@ class AudioProcessView(APIView):
         serializer.is_valid(raise_exception=True)
         audio = serializer.save()
         audiofile = audio.audio
-        print(audiofile)
+        audiofile = 'media/' + str(audiofile)
+        audiotype = audio.type
+
+        docum = select_convert(audiofile, audiotype)
+        print(docum)
+        audio.document = docum
+
         return Response()
