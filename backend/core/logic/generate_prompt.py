@@ -1,7 +1,7 @@
 def minute_prompt():
     return """
     I have a meeting discussion in text. I want to convert that discussion into minute. 
-    If not found, return empty value in below json list and dictionary.  Just return json format reply without any other note and content. The format type is given below: 
+    If not found, return empty value in below json list and dictionary. Just return json format reply without any other note and content. The format type is given below: 
     json = { 
     Company name: ,
     Institute of: ,
@@ -24,32 +24,61 @@ def minute_prompt():
     }
 
     meeting conversation:"""
-def speech_prompt():
-        return """
-        Make well documented report of above text with contents exactly as mentioned below.
-        Title: 
-        Introduction-: a brief explanation of the given text, including all the concepts and keywords used. 
-        Speaker's Experience -: a detailed paragraph where the person says statements using my, me and  I. what other people did or said to them.
-        Problems shared -: detailed information on the problems, difficult, hard things speaker says about in the text
-        Solution -: a detailed notes on how to deal, how to be happy, what the speaker mentions for the problems mentioned above
-        Current scenario -: Explain about any situation, the speaker says about in detail. Otherwise give empty.
-        Q/A- : any sentence with ? and he asked the audiences. Also give answer to those.
 
-        speech:
+
+def speech_prompt():
+    return """
+    I have a speech given by a person in text form. I want to convert this speech into well documented form as a report.
+    If not found, return empty value in below json list and dictionary. Just return json format reply without any other note and content. The format type is given below: 
+    json = {
+    Title: give a suitable title,
+    Introduction: a brief explanation of the given text, including all the concepts and keywords used. 
+    Speaker Experience: A brief paragraph where the person says statements using my, me and  I. what other people did or said to them.
+    [
+    Problems shared:{
+    description of problem: brief information on the problems, difficult, hard things speaker says about in the speech text, at least 2}
+    ] -> n problems according to the speech text
+    }
+
+    speech text is:"""
     
-    
-    """
+
+def speech_prompt2():
+    return """
+    I have a speech given by a person in text form. I want to convert this speech into well documented form as a report.
+    If not found, return empty value in below json list and dictionary. Just return json format reply without any other note and content. The format type is given below: 
+    json = {
+    Solution: [soultion1, solution2, ...] -> a detailed points on how to deal with the problem in given speech
+    Current scenario: Explain about any situation, the speaker says about in detail. Otherwise give empty.
+    [
+    QandA from audience:{
+    question: ,
+    answer: ,
+    }] -> n q/a shortly according to the speech text
+    }
+
+    speech text is:"""
+
+
+
 def lecture_prompt():
     return """
-    The detailed documentation notes from lectures
-    Title:
-    The topics covered : The main objective of the text, the new contents in the text
-    Description: All the keywords, and related statements in the text, about the topics covered
-    Q/A: the questions in the text with question marks and their answers
+    I have a lecture given by a professor in text format. I want to convert this lecture into well readable note.
+    If not found, return empty value in below json list and dictionary. Just return json format reply without any other note and content. The format type is given below: 
+    json = {
+    Title: ,
+    objective: [obj1, obj2, ...] -> n objectives according to lecture text 
+    [
+    The topics covered: {
+    topic: ,
+    description: , } -> n number topics and the description included in lecture text
+    ]
+    [
+    Q/A from students:{
+    question: ,
+    answer: ,
+    }] -> n q/a according to the lecture text,
     Conclusion: final summary of overall text
-
-
-
+    }
+    lecture text:
 """
-
-

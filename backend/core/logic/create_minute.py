@@ -188,7 +188,3 @@ def create_minute(file_path, dictionary):
     doc.save(file_path)
     print(f'Minute created at: {file_path}')
 
-
-if __name__ == "__main__":
-    file_path = "documents/minute.docx"
-    create_minute(file_path)
