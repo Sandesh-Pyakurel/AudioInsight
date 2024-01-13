@@ -1,5 +1,6 @@
 import json
 import os
+from django.conf import settings
 
 from .audio_text import convert_text
 from .gpt_response import get_content
@@ -10,16 +11,18 @@ from .create_speech_document import create_speech_document
 from .create_lecture_note import create_lecture_note
 
 def audio_to_minute(audio):
+    temp_path = 'core/logic/documents/minute.docx'
     text = convert_text(audio)
     prompt = minute_prompt() + text
     response = get_content(prompt)
     json_object = json.loads(response)
-    file_path = os.path.abspath('core/logic/documents/minute.docx')
+    file_path = os.path.join(settings.MEDIA_URL, temp_path) 
     create_minute(file_path, json_object)
-    return file_path
+    return temp_path
 
 
 def audio_to_speech_document(audio):
+    temp_path = 'core/logic/documents/speech_document.docx'
     text = convert_text(audio)
     prompt = speech_prompt() + text
     prompt2 = speech_prompt2() + text
@@ -27,19 +30,20 @@ def audio_to_speech_document(audio):
     response2 = get_content(prompt2)
     json_object = json.loads(response)
     json_object2 = json.loads(response2)
-    file_path = os.path.abspath('core/logic/documents/speech_document.docx')
+    file_path = os.path.join(settings.MEDIA_URL, temp_path) 
     create_speech_document(file_path, json_object, json_object2)
-    return file_path
+    return temp_path
 
 
 def audio_to_lecture_note(audio):
+    temp_path = 'core/logic/documents/lecture_note.docx'    
     text = convert_text(audio)
     prompt = lecture_prompt() + text
     response = get_content(prompt)
     json_object = json.loads(response)
-    file_path = os.path.abspath('core/logic/documents/lecture_note.docx')
+    file_path = os.path.join(settings.MEDIA_URL,temp_path) 
     create_lecture_note(file_path, json_object)
-    return file_path
+    return temp_path
 
 
 def select_convert(audio, type):
