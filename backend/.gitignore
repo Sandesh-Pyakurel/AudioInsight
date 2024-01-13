@@ -162,3 +162,7 @@ cython_debug/
 #audio
 *.m4a
 *.mp3
+
+#pipfile
+Pipfile
+Pipfile.lock
