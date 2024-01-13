@@ -40,7 +40,7 @@ export const FileBrowse = () => {
           const formData = new FormData();
           formData.append("user", userID);
           formData.append("audio", selFile);
-          formData.append("type", "meeting");
+          formData.append("type", selectedOpt);
           const res = await axiosPrivate.post(API_EP.AUDIOPROCESS, formData, {
             headers: {
               "Content-Type": "multipart/form-data",
