@@ -1,3 +1,7 @@
+import shutil
+import string
+import random
+import os
 from django.contrib.auth import authenticate
 from rest_framework import status
 from rest_framework.response import Response
@@ -67,11 +71,17 @@ class AudioProcessView(APIView):
         serializer.is_valid(raise_exception=True)
         audio = serializer.save()
         audiofile = audio.audio
-        audiofile = 'media/' + str(audiofile)
+        audiofile = audiofile
         audiotype = audio.type
 
-        docum = select_convert(audiofile, audiotype)
-        audio.document.name = docum
+        res = ''.join(random.choices(string.ascii_lowercase + string.digits, k=5))
+        docum = select_convert('media/' + str(audiofile), audiotype)
+        print(docum)
+        new_path = docum + res + '.docx'
+        os.rename(docum, new_path)
+        shutil.move(new_path, 'media/core/logic/documents/')
+        audio.document = request.build_absolute_uri('/') + 'media/' + new_path
+        print(audio.document)
         audio.save()
 
         return Response(serializer.data, status=status.HTTP_200_OK)
