@@ -166,3 +166,7 @@ cython_debug/
 #pipfile
 Pipfile
 Pipfile.lock
+
+#database
+db.sqlite3
+
