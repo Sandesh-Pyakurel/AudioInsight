@@ -168,5 +168,7 @@ Pipfile
 Pipfile.lock
 
 #database
-db.sqlite3
+#db.sqlite3
 
+media/
+documents/
