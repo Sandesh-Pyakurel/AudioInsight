@@ -1,12 +1,12 @@
 import json
 
-from audio_text import convert_text
-from gpt_response import get_content
-from generate_prompt import minute_prompt, speech_prompt, speech_prompt2, lecture_prompt
+from .audio_text import convert_text
+from .gpt_response import get_content
+from .generate_prompt import minute_prompt, speech_prompt, speech_prompt2, lecture_prompt
 
-from create_minute import create_minute
-from create_speech_document import create_speech_document
-from create_lecture_note import create_lecture_note
+from .create_minute import create_minute
+from .create_speech_document import create_speech_document
+from .create_lecture_note import create_lecture_note
 
 def audio_to_minute(audio):
     text = convert_text(audio)
