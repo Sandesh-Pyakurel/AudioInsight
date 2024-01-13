@@ -36,7 +36,7 @@ export const MyDocs = () => {
     <NavBar/>
     <div className="files-container">
     {files.map((file)=>(
-        <File key = {file.id}filename = {file.filename} url = {file.URL}/>
+        <File key = {file.id} filename = {file.filename} url = {file.URL}/>
     ))}
     {/* <div>MyDocs</div> */}
     </div>

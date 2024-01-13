@@ -5,5 +5,23 @@
     text-align: center;
     align-items: center;
     padding-left: 1rem;
+    font-family: 'Courier New';
+    font-weight:500;
+    font-size: 1rem;
     
+}
+.nav-link {
+    display: flex;
+    width: 10rem;
+    justify-content: center;
+    text-align: center;
+    min-height: 3rem; /* Adjust the minimum height based on your design */
+    line-height: 3rem; /* Match the line-height with the height for vertical alignment */
+    text-decoration: none;
+    color: #000;  /* Set the default text color */
+}
+.nav-link:hover {
+    color: white !important;  
+    background-color: grey; 
+    border-radius: 0.2rem;
 }

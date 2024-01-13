@@ -1,7 +1,7 @@
 .files-container{
     display: flex;
     justify-content: space-evenly;
-    
+    font-family: 'Courier New';
     width:100%;
     padding: 1rem;
 }
