@@ -30,4 +30,9 @@ class UserProfileSerializer(serializers.ModelSerializer):
 class AudioProcessSerializer(serializers.ModelSerializer):
     class Meta:
         model = AudioInsight
-        fields = ['id', 'user', 'audio', 'type']
+        fields = ['id', 'user', 'audio', 'type','document', 'doc_name']
+
+        extra_kwargs = {
+            'audio':{'write_only':True},
+            'document':{'read_only':True}
+        }
