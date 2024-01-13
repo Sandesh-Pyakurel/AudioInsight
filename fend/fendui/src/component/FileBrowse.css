@@ -24,3 +24,20 @@
     background-color: black;
     color:grey;
 }
+.logoicon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    width: 20vw;
+    font-size: 5rem;
+    background-color: #dedede;
+    margin: 0 auto;
+    border-radius: 0.3rem;
+}
+.logoicon:hover{
+    border: 1px solid black;
+}
+.logoicon span{
+    font-size:2rem ;
+}
