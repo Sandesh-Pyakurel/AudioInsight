@@ -16,7 +16,7 @@ def audio_to_minute(audio):
     prompt = minute_prompt() + text
     response = get_content(prompt)
     json_object = json.loads(response)
-    file_path = os.path.join(settings.MEDIA_URL, temp_path) 
+    file_path = os.path.abspath(temp_path) 
     create_minute(file_path, json_object)
     return temp_path
 
@@ -30,7 +30,7 @@ def audio_to_speech_document(audio):
     response2 = get_content(prompt2)
     json_object = json.loads(response)
     json_object2 = json.loads(response2)
-    file_path = os.path.join(settings.MEDIA_URL, temp_path) 
+    file_path = os.path.abspath(temp_path) 
     create_speech_document(file_path, json_object, json_object2)
     return temp_path
 
@@ -41,7 +41,7 @@ def audio_to_lecture_note(audio):
     prompt = lecture_prompt() + text
     response = get_content(prompt)
     json_object = json.loads(response)
-    file_path = os.path.join(settings.MEDIA_URL,temp_path) 
+    file_path = os.path.abspath(temp_path) 
     create_lecture_note(file_path, json_object)
     return temp_path
 
