@@ -12,5 +12,5 @@ class AudioInsight(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     type = models.CharField(max_length=64)
     audio = models.FileField(upload_to='core/audio/files')
-    document = models.FileField(upload_to='core/docs/files')
+    document = models.CharField(max_length=255)
     doc_name = models.CharField(max_length=64)
