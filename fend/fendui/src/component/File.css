@@ -13,8 +13,9 @@
     margin-right: 0.5rem;
 }
 .logoicon:hover{
-    background-color: #dedede;
+    background-color: grey;
     border-radius: 0.2rem;
+    color: white;
     
 }
 /* .logoicon span{

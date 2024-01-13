@@ -16,6 +16,7 @@ export const FileBrowse = () => {
     const [submitted, setSubmitted] = useState(false);
     const [errMsg, setErrMsg] = useState('');
     const [click, setClick] = useState(false);
+    const [inputfile, setInputFile] = useState('');
     const handleFileChange = (e)=>{
         const file= e.target.files[0];
         setSelFile(file);
@@ -57,6 +58,7 @@ export const FileBrowse = () => {
           formData.append("user", userID);
           formData.append("audio", selFile);
           formData.append("type", selectedOpt);
+          formData.append("doc_name", inputfile);
           const res = await axiosPrivate.post(API_EP.AUDIOPROCESS, formData, {
             headers: {
               "Content-Type": "multipart/form-data",
@@ -93,7 +95,9 @@ export const FileBrowse = () => {
     }
     useEffect(()=>{
       console.log(selectedOpt);
-    },[selectedOpt])
+      console.log(inputfile);
+
+    },[selectedOpt, inputfile])
     
   return (
     <>
@@ -118,6 +122,10 @@ export const FileBrowse = () => {
       <option value={type2}>LectureNotes</option>
       <option value={type3}>SpeechDocument</option>
     </select>
+    </div>
+    <div className= "documentname">
+      <span>Filename For Document:</span>
+      <input type="text" value = {inputfile} onChange={(e) => setInputFile(e.target.value)}/>
     </div>
     <div>
     <button className = "filebutton"
