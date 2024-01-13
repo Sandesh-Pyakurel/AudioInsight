@@ -60,25 +60,23 @@ def speech_prompt2():
     speech text is:"""
 
 
-
 def lecture_prompt():
     return """
     I have a lecture given by a professor in text format. I want to convert this lecture into well readable note.
     If not found, return empty value in below json list and dictionary. Just return json format reply without any other note and content. The format type is given below: 
     json = {
-    Title: ,
+    Title: give a suitable title,
     objective: [obj1, obj2, ...] -> n objectives according to lecture text 
     [
-    The topics covered: {
-    topic: ,
-    description: , } -> n number topics and the description included in lecture text
+    Taught Things: {
+    Topic: ,
+    Explanation of topic: , } -> n number topics and the explanation included in lecture text
     ]
     [
     Q/A from students:{
-    question: ,
-    answer: ,
+    question: any question related to lecture,
+    answer: answer for the mentioned question,
     }] -> n q/a according to the lecture text,
     Conclusion: final summary of overall text
     }
-    lecture text:
-"""
+    lecture text:"""
