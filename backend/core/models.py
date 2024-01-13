@@ -5,5 +5,10 @@ from django.db import models
 
 #user
 class User(AbstractUser):
-  pass
+    pass
 
+
+class AudioInsight(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    type = models.CharField(max_length=64)
+    audio = models.FileField(upload_to='core/audio/files')

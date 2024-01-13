@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import User
+from .models import User, AudioInsight
 
 class UserRegisterationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -25,3 +25,9 @@ class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'first_name', 'last_name']
+
+
+class AudioProcessSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AudioInsight
+        fields = ['id', 'user', 'audio', 'type']
