@@ -57,6 +57,11 @@ class AudioProcessView(APIView):
     renderer_classes = [UserRenderer]
     permission_classes = [IsAuthenticated]
 
+    def get(self, request, format=None):
+        audio = AudioInsight.objects.all().filter(user=request.user)
+        serializer = AudioProcessSerializer(audio, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
     def post(self, request, format=None):
         serializer = AudioProcessSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -66,7 +71,7 @@ class AudioProcessView(APIView):
         audiotype = audio.type
 
         docum = select_convert(audiofile, audiotype)
-        print(docum)
-        audio.document = docum
+        audio.document.name = docum
+        audio.save()
 
-        return Response()
+        return Response(serializer.data, status=status.HTTP_200_OK)
