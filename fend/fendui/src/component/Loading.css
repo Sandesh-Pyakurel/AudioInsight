@@ -1,0 +1,12 @@
+.loader{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    
+    align-items: center;
+    justify-content: space-between;
+}
+.loader_text{
+    margin: 1rem;
+    font-size: large;
+}
