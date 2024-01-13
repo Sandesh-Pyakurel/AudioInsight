@@ -1,21 +1,30 @@
 import React, { useEffect } from 'react'
 import './FileBrowse.css'
 import { useState } from 'react';
+import { PiMicrosoftWordLogoFill } from "react-icons/pi";
+import {Loading }from './Loading'
 export const FileBrowse = () => {
     const type1 = 'Minute';
     const type2 = 'LectureNotes';
     const type3 = 'SpeechDocument';
     const [selFile, setSelFile]= useState(null);
     const [selectedOpt, setSelectedOpt] = useState(null);
+    const [showFileIcon, setShowFileIcon] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
     const handleFileChange = (e)=>{
         const file= e.target.files[0];
         setSelFile(file);
+    }
+    const handleFileShow = ()=>{
+      console.log('directed to another url');
     }
     const handleSubmit = ()=>{
         if(selFile && selectedOpt){
             console.log(selFile);
             console.log(selectedOpt);
         }
+        setSubmitted(true);
+        
     }
     const handleSelectChange = (e)=>{
       setSelectedOpt(e.target.value);
@@ -55,8 +64,20 @@ export const FileBrowse = () => {
           Submit
     </button>
     </div>
-    
     </div>
+    {(showFileIcon && !submitted)? (
+        <div className='logoicon' onClick={handleFileShow}>
+          <PiMicrosoftWordLogoFill/>
+          <span>hello</span>
+          {/* Add any additional information or styling for the file icon */}
+        </div>
+      ) : (
+        <>
+          {submitted ? <Loading/> : <></>}
+        </>
+        
+        
+      )}
     
     </>
     
