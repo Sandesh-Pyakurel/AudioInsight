@@ -1,6 +1,6 @@
 import openai
 
-openai.api_key = 'paste key'
+openai.api_key = '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'
 
 def get_content(prompt, model="gpt-3.5-turbo"):
     print("json creating ....")
