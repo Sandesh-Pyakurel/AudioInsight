@@ -5,6 +5,7 @@ import { AudioConverter } from './Pages/AudioConverter';
 import Login from './Pages/login';
 import Layout from './Layout/layout';
 import RequireAuth from './packages/Auth/requireAuth';
+import { Register } from './Pages/Register';
 function App() {
   return (
     <BrowserRouter>
@@ -15,6 +16,7 @@ function App() {
       <Route element = {<RequireAuth/>} >
       <Route path = '/conversion' element = {<AudioConverter/>}/>
       </Route>
+      <Route element = {<Register/>} path = "/Register" />
       
       </Route>
     </Routes>
