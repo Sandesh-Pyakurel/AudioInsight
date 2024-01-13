@@ -23,6 +23,27 @@ export const FileBrowse = () => {
         setSelFile(file);
     }
     const axiosPrivate = useAxiosPrivate();
+
+    useEffect(()=>{
+      const getDfile = async () =>{
+        let isMounted = true;
+        const controller = new AbortController();
+        try{    
+            const res = await axiosPrivate.get(`${API_EP.AUDIOPROCESS}`,{ signal: controller.signal});
+            console.log(res.data[res.data.length - 1]);
+            isMounted && setDfile(res.data[res.data.length-1]);
+        }catch(err){
+            console.error(err);
+        }
+        return() => {
+          isMounted = false;
+          controller.abort();
+        }
+      }
+    
+    getDfile();
+    },[submitted]);
+
     const Notification = ({ message, type }) => {
       const notificationStyle = {
         backgroundColor: '#dedede',
@@ -87,6 +108,7 @@ export const FileBrowse = () => {
           setErrMsg("An unexpected error occurred");
         }
       }
+      setSubmitted(true);
     
         
         
@@ -100,25 +122,7 @@ export const FileBrowse = () => {
       console.log(inputfile);
 
     },[selectedOpt, inputfile]);
-
-    useEffect(()=>{
-      const getDfile = async () =>{
-        let isMounted = true;
-        const controller = new AbortController();
-        try{    
-            const res = await axiosPrivate.get(`${API_EP.AUDIOPROCESS}`,{ signal: controller.signal});
-            console.log(res.data[res.data.lenth - 1]);
-            isMounted && setDfile(res.data[res.data.length-1]);
-        }catch(err){
-            console.error(err);
-        }
     
-    getDfile();
-    return() => {
-      isMounted = false;
-      controller.abort();
-    }}
-    },[submitted]);
     
   return (
     <>
