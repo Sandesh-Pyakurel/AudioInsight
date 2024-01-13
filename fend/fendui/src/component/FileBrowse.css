@@ -1,0 +1,26 @@
+.choose{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+    height:50vh;
+    justify-content: center;
+    
+}
+.filebutton{
+    background-color: black;
+    color:white;
+    width:6rem;
+    border: 1px solid grey;
+    border-radius: 0.4rem;
+    height:2.2rem;
+    margin-top: 1rem;
+}
+.filebutton:hover{
+    background-color: #dedede;
+    color:black;
+}
+.filebutton:disabled{
+    background-color: black;
+    color:grey;
+}
