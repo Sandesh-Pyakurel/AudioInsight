@@ -9,7 +9,7 @@
     animation: moveIn 0.8s ease forwards;
     font-family: 'Courier New';
     background-color: #dedede;
-    margin-top: 1rem;
+    margin-top: 3rem;
     border-radius: 1rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
